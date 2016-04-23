@@ -1,5 +1,6 @@
 window.onload = function() {
-  var counterValue = 0;
+  var initialState = 0;
+  var counterValue = initialState;
 
   var counter = document.createElement('div');
   counter.innerText = counterValue;
@@ -37,9 +38,18 @@ window.onload = function() {
     counterEl.innerText = counterValue;
   };
 
+  var resetButton = document.createElement('button');
+  resetButton.innerText = 'reset';
+  resetButton.onclick = function() {
+    counterValue = initialState;
+    var counterEl = document.getElementById('counter');
+    counterEl.innerText = counterValue;
+  };
+
   document.body.appendChild(counter);
   document.body.appendChild(incrementButton);
   document.body.appendChild(incrementByTwoButton);
+  document.body.appendChild(resetButton);
   document.body.appendChild(decrementButton);
   document.body.appendChild(decrementByTwoButton);
 }
