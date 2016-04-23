@@ -1,0 +1,17 @@
+{
+  "name": "react-rxjs-gdg-jihlava-talk",
+  "version": "0.1.0",
+  "description": "Demo project",
+  "main": "index.js",
+  "scripts": {
+    "test": "nope"
+  },
+  "keywords": [
+    "react",
+    "rxjs",
+    "talk",
+    "demo"
+  ],
+  "author": "Viliam Elischer <code.vire@gmail.com> (https://github.com/vire)",
+  "license": "ISC"
+}
