@@ -5,14 +5,23 @@ window.onload = function() {
   counter.innerText = counterValue;
   counter.id = 'counter';
 
-  var button = document.createElement('button');
-  button.innerText = 'increment';
-  button.onclick = function() {
+  var incrementButton = document.createElement('button');
+  incrementButton.innerText = 'increment';
+  incrementButton.onclick = function() {
     counterValue += 1;
     var counterEl = document.getElementById('counter');
     counterEl.innerText = counterValue;
   };
 
+  var decrementButton = document.createElement('button');
+  decrementButton.innerText = 'decrement';
+  decrementButton.onclick = function() {
+    counterValue -= 1;
+    var counterEl = document.getElementById('counter');
+    counterEl.innerText = counterValue;
+  };
+
   document.body.appendChild(counter);
-  document.body.appendChild(button);
+  document.body.appendChild(incrementButton);
+  document.body.appendChild(decrementButton);
 }
