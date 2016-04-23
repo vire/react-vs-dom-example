@@ -1,14 +1,13 @@
 {
-  "name": "react-rxjs-gdg-jihlava-talk",
+  "name": "react-vs-dom-example",
   "version": "0.1.0",
-  "description": "Demo project",
-  "main": "index.js",
+  "description": "Example project",
   "scripts": {
     "test": "nope"
   },
   "keywords": [
     "react",
-    "rxjs",
+    "DOM",
     "talk",
     "demo"
   ],
