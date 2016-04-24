@@ -1,108 +1,67 @@
 window.onload = function() {
+  var counterElems = [];
   var firstCounterInitialState = 0;
-  var secondCounterInitialState = 2;
-  var thirdCounterInitialState = 5;
+  var secondCounterInitialState = 101;
+  var thirdCounterInitialState = 42;
   var firstCounterValue = firstCounterInitialState;
   var secondCounterValue = secondCounterInitialState;
   var thirdCounterValue = thirdCounterInitialState;
 
+  var clickHandler = function(value) {
+    if (value) {
+      firstCounterValue = firstCounterValue + value;
+      secondCounterValue = secondCounterValue + value;
+      thirdCounterValue = thirdCounterValue + value;
+    } else {
+      firstCounterValue = firstCounterInitialState
+      secondCounterValue = secondCounterInitialState;
+      thirdCounterValue = thirdCounterInitialState;
+    }
+
+    counterElems[0].innerText = firstCounterValue;
+    counterElems[1].innerText = secondCounterValue;
+    counterElems[2].innerText = thirdCounterValue;
+  }
+
   var firstCounterEl = document.createElement('div');
   firstCounterEl.innerText = firstCounterValue;
   firstCounterEl.className = 'first-counter';
+  counterElems.push(firstCounterEl);
 
   var secondCounterEl = document.createElement('div');
   secondCounterEl.innerText = secondCounterValue;
   secondCounterEl.className = 'second-counter';
+  counterElems.push(secondCounterEl);
 
   var thirdCounterEl = document.createElement('div');
   thirdCounterEl.innerText = thirdCounterValue;
   thirdCounterEl.className = 'third-counter';
+  counterElems.push(thirdCounterEl);
 
   var incrementButton = document.createElement('button');
   incrementButton.innerText = 'increment';
-  incrementButton.onclick = function() {
-    var _firstCounterEl = document.getElementsByClassName('first-counter')[0];
-    var _secondCounterEl = document.getElementsByClassName('second-counter')[0];
-    var _thirdCounterEl = document.getElementsByClassName('third-counter')[0];
-
-    firstCounterValue += 1;
-    secondCounterValue += 1;
-    thirdCounterValue += 1;
-
-    _firstCounterEl.innerText = firstCounterValue;
-    _secondCounterEl.innerText = secondCounterValue;
-    _thirdCounterEl.innerText = thirdCounterValue;
-  };
+  incrementButton.onclick = clickHandler.bind(undefined, 1);
 
   var incrementByTwoButton = document.createElement('button');
   incrementByTwoButton.innerText = 'increment by 2';
-  incrementByTwoButton.onclick = function() {
-    var _firstCounterEl = document.getElementsByClassName('first-counter')[0];
-    var _secondCounterEl = document.getElementsByClassName('second-counter')[0];
-    var _thirdCounterEl = document.getElementsByClassName('third-counter')[0];
-
-    firstCounterValue += 2;
-    secondCounterValue += 2;
-    thirdCounterValue += 2;
-
-    _firstCounterEl.innerText = firstCounterValue;
-    _secondCounterEl.innerText = secondCounterValue;
-    _thirdCounterEl.innerText = thirdCounterValue;
-  };
+  incrementByTwoButton.onclick = clickHandler.bind(undefined, 2);
 
   var decrementButton = document.createElement('button');
   decrementButton.innerText = 'decrement';
-  decrementButton.onclick = function() {
-    var _firstCounterEl = document.getElementsByClassName('first-counter')[0];
-    var _secondCounterEl = document.getElementsByClassName('second-counter')[0];
-    var _thirdCounterEl = document.getElementsByClassName('third-counter')[0];
-
-    firstCounterValue -= 1;
-    secondCounterValue -= 1;
-    thirdCounterValue -= 1;
-
-    _firstCounterEl.innerText = firstCounterValue;
-    _secondCounterEl.innerText = secondCounterValue;
-    _thirdCounterEl.innerText = thirdCounterValue;
-  };
+  decrementButton.onclick = clickHandler.bind(undefined, -1);
 
   var decrementByTwoButton = document.createElement('button');
   decrementByTwoButton.innerText = 'decrement by 2';
-  decrementByTwoButton.onclick = function() {
-    var incrementValue = 2;
-    var _firstCounterEl = document.getElementsByClassName('first-counter')[0];
-    var _secondCounterEl = document.getElementsByClassName('second-counter')[0];
-    var _thirdCounterEl = document.getElementsByClassName('third-counter')[0];
-
-    firstCounterValue -= 2;
-    secondCounterValue -= 2;
-    thirdCounterValue -= 2;
-
-    _firstCounterEl.innerText = firstCounterValue;
-    _secondCounterEl.innerText = secondCounterValue;
-    _thirdCounterEl.innerText = thirdCounterValue;
-  };
+  decrementByTwoButton.onclick = clickHandler.bind(undefined, -2);
 
   var resetButton = document.createElement('button');
   resetButton.innerText = 'reset';
-  resetButton.onclick = function() {
-    var _firstCounterEl = document.getElementsByClassName('first-counter')[0];
-    var _secondCounterEl = document.getElementsByClassName('second-counter')[0];
-    var _thirdCounterEl = document.getElementsByClassName('third-counter')[0];
-
-    firstCounterValue = firstCounterInitialState
-    secondCounterValue = secondCounterInitialState;
-    thirdCounterValue = thirdCounterInitialState;
-
-    _firstCounterEl.innerText = firstCounterValue;
-    _secondCounterEl.innerText = secondCounterValue;
-    _thirdCounterEl.innerText = thirdCounterValue;
-  };
+  resetButton.onclick = clickHandler.bind(undefined, 0);
 
   // display
-  document.body.appendChild(firstCounterEl);
-  document.body.appendChild(secondCounterEl);
-  document.body.appendChild(thirdCounterEl);
+  counterElems.forEach(function(counterEl) {
+    document.body.appendChild(counterEl);
+  })
   // controls
   document.body.appendChild(incrementButton);
   document.body.appendChild(incrementByTwoButton);
