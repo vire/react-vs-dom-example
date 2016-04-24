@@ -18,23 +18,23 @@ window.onload = function() {
       thirdCounterValue = thirdCounterInitialState;
     }
 
-    counterElems[0].innerText = firstCounterValue;
-    counterElems[1].innerText = secondCounterValue;
-    counterElems[2].innerText = thirdCounterValue;
+    counterElems[0].innerText = 'First counter value: ' + firstCounterValue;
+    counterElems[1].innerText = 'Second counter value: ' + secondCounterValue;
+    counterElems[2].innerText = 'Third counter value: ' + thirdCounterValue;
   }
 
   var firstCounterEl = document.createElement('div');
-  firstCounterEl.innerText = firstCounterValue;
+  firstCounterEl.innerText = 'First counter value: ' + firstCounterValue;
   firstCounterEl.className = 'first-counter';
   counterElems.push(firstCounterEl);
 
   var secondCounterEl = document.createElement('div');
-  secondCounterEl.innerText = secondCounterValue;
+  secondCounterEl.innerText = 'Second counter value: ' + secondCounterValue;
   secondCounterEl.className = 'second-counter';
   counterElems.push(secondCounterEl);
 
   var thirdCounterEl = document.createElement('div');
-  thirdCounterEl.innerText = thirdCounterValue;
+  thirdCounterEl.innerText = 'Third counter value: ' + thirdCounterValue;
   thirdCounterEl.className = 'third-counter';
   counterElems.push(thirdCounterEl);
 
