@@ -18,24 +18,56 @@ window.onload = function() {
       thirdCounterValue = thirdCounterInitialState;
     }
 
-    counterElems[0].innerText = 'First counter value: ' + firstCounterValue;
-    counterElems[1].innerText = 'Second counter value: ' + secondCounterValue;
-    counterElems[2].innerText = 'Third counter value: ' + thirdCounterValue;
+    for (var i = 0; i < counterElems[0].children.length; i++) {
+      if (counterElems[0].children[i].classList.contains('counter-value')) {
+        counterElems[0].children[i].innerText = firstCounterValue;
+      }
+    }
+
+    for (var j = 0; j < counterElems[1].children.length; j++) {
+      if (counterElems[1].children[j].classList.contains('counter-value')) {
+        counterElems[1].children[j].innerText = secondCounterValue;
+      }
+    }
+
+    for (var k = 0; k < counterElems[2].children.length; k++) {
+      if (counterElems[2].children[k].classList.contains('counter-value')) {
+        counterElems[2].children[k].innerText = thirdCounterValue;
+      }
+    }
   }
 
   var firstCounterEl = document.createElement('div');
-  firstCounterEl.innerText = 'First counter value: ' + firstCounterValue;
+  var firstCounterTitle = document.createElement('span');
+  var firstCounterValueBox = document.createElement('span');
   firstCounterEl.className = 'first-counter';
+  firstCounterTitle.innerText = 'First counter value: ';
+  firstCounterValueBox.className = 'counter-value';
+  firstCounterValueBox.innerText = firstCounterValue;
+  firstCounterEl.appendChild(firstCounterTitle);
+  firstCounterEl.appendChild(firstCounterValueBox);
   counterElems.push(firstCounterEl);
 
   var secondCounterEl = document.createElement('div');
-  secondCounterEl.innerText = 'Second counter value: ' + secondCounterValue;
+  var secondCounterTitle = document.createElement('span');
+  var secondCounterValueBox = document.createElement('span');
   secondCounterEl.className = 'second-counter';
+  secondCounterTitle.innerText = 'Second counter value: ';
+  secondCounterValueBox.className = 'counter-value';
+  secondCounterValueBox.innerText = secondCounterValue;
+  secondCounterEl.appendChild(secondCounterTitle);
+  secondCounterEl.appendChild(secondCounterValueBox);
   counterElems.push(secondCounterEl);
 
   var thirdCounterEl = document.createElement('div');
-  thirdCounterEl.innerText = 'Third counter value: ' + thirdCounterValue;
+  var thirdCounterTitle = document.createElement('span');
+  var thirdCounterValueBox = document.createElement('span');
   thirdCounterEl.className = 'third-counter';
+  thirdCounterTitle.innerText = 'Third counter value: ';
+  thirdCounterValueBox.className = 'counter-value';
+  thirdCounterValueBox.innerText = thirdCounterValue;
+  thirdCounterEl.appendChild(thirdCounterTitle);
+  thirdCounterEl.appendChild(thirdCounterValueBox);
   counterElems.push(thirdCounterEl);
 
   var incrementButton = document.createElement('button');
