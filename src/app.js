@@ -1,20 +1,16 @@
 window.onload = function() {
-  var counterElems = [];
-  var counterNames = ['first', 'second', 'third'];
-  var initialState = {
-    counters: {
-      first: 0,
-      second: 101,
-      third: 42,
-    }
-  };
-  var state = {
-    counters: {
-      first: initialState.counters['first'],
-      second: initialState.counters['second'],
-      third: initialState.counters['third'],
-    }
-  };
+  var counterDefinitons = [
+    {
+      initialValue: 0,
+      name: 'first',
+    }, {
+      initialValue: 101,
+      name: 'second',
+    }, {
+      initialValue: 42,
+      name: 'third',
+    },
+  ];
 
   function Counter(name, value) {
     var capitalizedName = name.charAt(0).toUpperCase() + name.slice(1)
@@ -28,13 +24,26 @@ window.onload = function() {
     valueBox.innerText = value;
     counterEl.appendChild(title);
     counterEl.appendChild(valueBox);
+    counterEl.appendChild(new CounterControls(this));
+    counterEl.appendChild(document.createElement('hr'));
 
-    this.name = name;
+    this.initialValue = value;
+    this.value = value;
     this.valueBox = valueBox;
-    this.DOMNode = counterEl;
+    return counterEl;
+  };
+
+  Counter.prototype.updateValue = function(value) {
+    if (value) {
+      this.value = this.value + value;
+    } else {
+      this.value = this.initialValue;
+    }
+
+    this.valueBox.innerText = this.value;
   }
 
-  function CounterControls() {
+  function CounterControls(counter) {
     var wrapper = document.createElement('div');
     var incrementButton = document.createElement('button');
     var incrementByTwoButton = document.createElement('button');
@@ -43,19 +52,19 @@ window.onload = function() {
     var resetButton = document.createElement('button');
 
     incrementButton.innerText = 'increment';
-    incrementButton.onclick = clickHandler.bind(undefined, 1);
+    incrementButton.onclick = counter.updateValue.bind(counter, 1);
 
     incrementByTwoButton.innerText = 'increment by 2';
-    incrementByTwoButton.onclick = clickHandler.bind(undefined, 2);
+    incrementByTwoButton.onclick = counter.updateValue.bind(counter, 2);
 
     decrementButton.innerText = 'decrement';
-    decrementButton.onclick = clickHandler.bind(undefined, -1);
+    decrementButton.onclick = counter.updateValue.bind(counter, -1);
 
     decrementByTwoButton.innerText = 'decrement by 2';
-    decrementByTwoButton.onclick = clickHandler.bind(undefined, -2);
+    decrementByTwoButton.onclick = counter.updateValue.bind(counter, -2);
 
     resetButton.innerText = 'reset';
-    resetButton.onclick = clickHandler.bind(undefined, 0);
+    resetButton.onclick =  counter.updateValue.bind(counter, 0);
 
     wrapper.appendChild(incrementButton);
     wrapper.appendChild(incrementByTwoButton);
@@ -64,30 +73,10 @@ window.onload = function() {
     wrapper.appendChild(decrementByTwoButton);
 
     return wrapper;
-  }
-
-  var clickHandler = function(value) {
-    Object.keys(state.counters).forEach(function(name) {
-      state.counters[name] = value
-        ? state.counters[name] + value
-        : initialState.counters[name];
-      var counter = counterElems.filter(function(counterInstance) {
-        return counterInstance.name === name;
-      })[0];
-
-      if (counter) {
-        counter.valueBox.innerText = state.counters[name];
-      }
-    });
-  }
+  };
 
   // display
-  counterNames.forEach(function(counterName) {
-    var counter = new Counter(counterName, state.counters[counterName]);
-    counterElems.push(counter);
-    document.body.appendChild(counter.DOMNode);
+  counterDefinitons.forEach(function(definition) {
+    document.body.appendChild(new Counter(definition.name, definition.initialValue));
   });
-
-  // controls
-  document.body.appendChild(new CounterControls());
 }
