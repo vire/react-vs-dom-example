@@ -15,9 +15,9 @@ export default class Root extends React.Component {
   render() {
     return (
       <div>
-        <Counter value={this.state.red} />
-        <Counter value={this.state.green} />
-        <Counter value={this.state.blue} />
+        <Counter name={'red'} value={this.state.red} />
+        <Counter name={'green'} value={this.state.green} />
+        <Counter name={'blue'} value={this.state.blue} />
       </div>
     );
   }

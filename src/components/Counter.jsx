@@ -1,5 +1,7 @@
 import React from 'react';
 
+const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
+
 export default class Counter extends React.Component {
 
   static propTypes = {
@@ -10,7 +12,7 @@ export default class Counter extends React.Component {
   render() {
     return (
       <div>
-        {this.props.name} counter value: {this.props.value}
+        {capitalize(this.props.name)} counter value: {this.props.value}
       </div>
     );
   }
