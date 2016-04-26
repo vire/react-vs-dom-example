@@ -1,11 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Root from './components/Root';
 
-const Root = () => {
-  return <div>Work in progress</div>;
-}
-
-ReactDOM.render(<Root/>, document.getElementById('root'));
+ReactDOM.render(<Root />, document.getElementById('root'));
 
 window.onload = function() {
   var state = {
