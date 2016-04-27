@@ -14,7 +14,7 @@ export default class Counter extends React.Component {
   render() {
     return (
       <div>
-        {capitalize(this.props.name)} counter value: {this.props.value}
+        <span>{capitalize(this.props.name)} counter value: {this.props.value}</span>
         <Controls onClick={this.props.updateCounter} />
       </div>
     );

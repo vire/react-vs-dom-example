@@ -1,5 +1,13 @@
 {
+  "env": {
+    "browser": true,
+    "mocha": true
+  },
   "extends": "airbnb",
+  "globals": {
+    "sinon": true,
+    "expect": true
+  },
   "parser": "babel-eslint",
   "plugins": [
       "react"
