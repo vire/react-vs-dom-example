@@ -7,6 +7,7 @@ export default class Counter extends React.Component {
 
   static propTypes = {
     name: React.PropTypes.string.isRequired,
+    updateCounter: React.PropTypes.func.isRequired,
     value: React.PropTypes.number.isRequired,
   }
 
@@ -14,7 +15,7 @@ export default class Counter extends React.Component {
     return (
       <div>
         {capitalize(this.props.name)} counter value: {this.props.value}
-        <Controls />
+        <Controls onClick={this.props.updateCounter} />
       </div>
     );
   }

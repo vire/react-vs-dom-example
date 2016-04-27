@@ -12,12 +12,33 @@ export default class Root extends React.Component {
     };
   }
 
+  updateCounter(name, amount) {
+    console.log(`Counter: ${name} was clicked with ${amount}`);
+    this.setState(
+      Object.assign({}, this.state, {
+        [name]: this.state[name] + amount,
+      })
+    );
+  }
+
   render() {
     return (
       <div>
-        <Counter name={'red'} value={this.state.red} />
-        <Counter name={'green'} value={this.state.green} />
-        <Counter name={'blue'} value={this.state.blue} />
+        <Counter
+          name={'red'}
+          updateCounter={this.updateCounter.bind(this, 'red')}
+          value={this.state.red}
+        />
+        <Counter
+          name={'green'}
+          updateCounter={this.updateCounter.bind(this, 'green')}
+          value={this.state.green}
+        />
+        <Counter
+          name={'blue'}
+          updateCounter={this.updateCounter.bind(this, 'blue')}
+          value={this.state.blue}
+        />
       </div>
     );
   }
