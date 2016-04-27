@@ -1,21 +1,6 @@
 import React from 'react';
 import Counter from './Counter';
-
-const stateToRGB = state => {
-  const color = Object.keys(state).map(colorName => state[colorName]).join(',');
-  return `rgb(${color})`;
-};
-
-const limit = val => {
-  if (val && val > 255) {
-    return 255;
-  } else if (val && val < 0) {
-    return 0;
-  } else if (val) {
-    return val;
-  }
-  return 0;
-};
+import { limit, stateToRGB } from '../utils';
 
 export default class Root extends React.Component {
 
