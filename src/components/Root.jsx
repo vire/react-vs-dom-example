@@ -5,18 +5,20 @@ export default class Root extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
+    this.defaultState = {
       red: 83,
       green: 124,
       blue: 190,
     };
+
+    this.state = Object.assign({}, this.defaultState);
   }
 
   updateCounter(name, amount) {
     console.log(`Counter: ${name} was clicked with ${amount}`);
     this.setState(
       Object.assign({}, this.state, {
-        [name]: this.state[name] + amount,
+        [name]: amount ? this.state[name] + amount : this.defaultState[name],
       })
     );
   }
